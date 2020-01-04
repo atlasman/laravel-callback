@@ -1,0 +1,31 @@
+<?php
+/**
+ * Class $CLASS$Processor.
+ *
+ * @author atlasman <iatlasman@gmail.com>
+ * @package $NAMESPACE$
+ */
+
+namespace $NAMESPACE$;
+
+use Illuminate\Http\Request;
+use Atlasman\LaravelCallback\Processors\Processor;
+
+class $CLASS$Processor extends Processor
+{
+    /**
+     * processor name
+     */
+    const NAME = '$CLASS$';
+
+    /**
+     * [execute description]
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function execute(Request $request)
+    {
+        //
+    }
+
+}

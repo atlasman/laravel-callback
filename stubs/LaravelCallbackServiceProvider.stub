@@ -1,0 +1,66 @@
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
+
+class LaravelCallbackServiceProvider extends ServiceProvider implements DeferrableProvider
+{
+
+    /**
+     * callback processor
+     *
+     * @var [type]
+     */
+    protected  $processors = [
+        // CustomProcessor::class,
+    ];
+
+    /**
+     * Register services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $providerConf = config('laracallback.provider');
+        foreach ($this->processors as $processor) {
+            $processorName = implode($providerConf['separator'], [
+                $providerConf['prefix'],
+                $processor::NAME
+            ]);
+            $this->app->singleton($processorName, function($app) use ($processor) {
+                return new $processor($app);
+            });
+        }
+    }
+
+    /**
+     * Bootstrap services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        //
+    }
+
+    /**
+    * 获取由提供者提供的服务。
+    *
+    * @return array
+    */
+    public function provides()
+    {
+        $provides = [];
+        $providerConf = config('laracallback.provider');
+        foreach ($this->processors as $processor) {
+            $provides[] = implode($providerConf['separator'], [
+                $providerConf['prefix'],
+                $processor::NAME
+            ]);
+        }
+        return $provides;
+    }
+}
