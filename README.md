@@ -8,10 +8,20 @@
 ```shell
 $ composer require atlasman/laravel-callback -vvv
 ```
+The package will automatically register itself.
 
-## Usage
+You can publish the config-file with:
 
-TODO
+```bash
+php artisan vendor:publish --provider="Atlasman\LaravelCallback\ServiceProvider" --tag="config"
+```
+
+You can publish the provider with:
+
+```bash
+php artisan vendor:publish --provider="Atlasman\LaravelCallback\ServiceProvider" --tag="provider"
+```
+
 
 ## Contributing
 

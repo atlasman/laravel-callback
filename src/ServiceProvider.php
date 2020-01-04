@@ -21,11 +21,11 @@ class ServiceProvider extends DefaultServiceProvider
 
             $this->publishes([
                 __DIR__.'/../config/laracallback.php' => config_path('laracallback.php'),
-            ], 'laracallback.config');
+            ], 'config');
 
             $this->publishes([
                 __DIR__.'/../stubs/LaravelCallbackServiceProvider.stub' => app_path('Providers/LaravelCallbackServiceProvider.php'),
-            ], 'laravel-callback-provider');
+            ], 'provider');
 
         }
 
